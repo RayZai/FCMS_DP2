@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/food">
+
+    <fragment
+        android:id="@+id/food"
+        android:name="com.example.catering.listOfService"
+        android:label="@string/catering"
+        tools:layout="@layout/list_of_service">
+    </fragment>
+    <fragment
+        android:id="@+id/order"
+        android:name="com.example.catering.orderStatus"
+        android:label="Order"
+        tools:layout="@layout/order">
+    </fragment>
+    <fragment
+        android:id="@+id/sales"
+        android:name="com.example.catering.sales"
+        android:label="Order"
+        tools:layout="@layout/sales">
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.catering.profile"
+        android:label="@string/profile"
+        tools:layout="@layout/profile"
+        />
+</navigation>

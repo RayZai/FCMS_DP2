@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single" android:id="@+id/customer">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/pp"
+            android:title="@string/profile"
+            android:visible="false"
+            />
+        <item
+            android:id="@+id/order"
+            android:icon="@drawable/status"
+            android:title="Order"
+            />
+
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/admin">
+    <item
+        android:id="@+id/sales"
+        android:icon="@drawable/sales"
+        android:title="Sales"
+        android:visible="false"
+        />
+    </group>
+    <group android:checkableBehavior="all" >
+
+        <item
+            android:id="@+id/food"
+            android:icon="@drawable/food"
+            android:title="@string/catering"
+            />
+
+        <item
+            android:id="@+id/signOut"
+            android:icon="@drawable/signout"
+            android:title="@string/signOut"
+            android:onClick="signOut"/>
+    </group>
+
+</menu>

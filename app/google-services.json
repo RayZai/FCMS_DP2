@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "528197718227",
+    "firebase_url": "https://cateringservicedp2.firebaseio.com",
+    "project_id": "cateringservicedp2",
+    "storage_bucket": "cateringservicedp2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528197718227:android:f2c8875bb903aa8df34426",
+        "android_client_info": {
+          "package_name": "com.example.catering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528197718227-vj37tj7h0imtpkseppjhbfpvtvc7ve9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE3xpyFShZcKbFu0hXDDXVU1Qs_X9TEO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528197718227-vj37tj7h0imtpkseppjhbfpvtvc7ve9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528197718227:android:3b960b90f17909a2f34426",
+        "android_client_info": {
+          "package_name": "com.example.catering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528197718227-vj37tj7h0imtpkseppjhbfpvtvc7ve9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE3xpyFShZcKbFu0hXDDXVU1Qs_X9TEO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528197718227-vj37tj7h0imtpkseppjhbfpvtvc7ve9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
