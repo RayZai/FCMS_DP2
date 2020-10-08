@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">Foodedge Gourmet Catering</string>
+    <string name="email">Email</string>
+    <string name="catering">Catering</string>
+    <string name="signOut">Sign Out</string>
+    <string name="open">Open</string>
+    <string name="fullName">Full Name</string>
+    <string name="close">Close</string>
+    <string name="password">Password</string>
+    <string name="confirmPass">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="edit">Edit</string>
+    <string name="done">Done</string>
+    <string name="register">Sign Up</string>
+    <string name="serviceList">Food List</string>
+    <string name="noAccount">Don\'t have an account? Sign up</string>
+    <string name="resetPass">Forget Password?</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_interface">mainInterface</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="clear">Clear</string>
+    <string name="price">Price: </string>
+    <string name="numPerson">Number of Person: </string>
+    <string name="home_second">Home Second</string>
+    <string name="create">Create Service</string>
+    <string name="service">Service:</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="foodList">Food List :</string>
+    <string name="food">Food List</string>
+    <string name="noFood">No food inserted</string>
 </resources>
