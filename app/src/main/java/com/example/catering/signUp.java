@@ -38,14 +38,14 @@ public class signUp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        firebaseAuth = FirebaseAuth.getInstance();
-        dialog = new ProgressDialog(getActivity());
-        confirmPass = v.findViewById(R.id.confirmPassword);
-        password = v.findViewById(R.id.password);
-        email = v.findViewById(R.id.email);
-        name = v.findViewById(R.id.name);
-        login = v.findViewById(R.id.signUp);
+        View view= inflater.inflate(R.layout.fragment_sign_up, container, false);
+        firebaseAuth=FirebaseAuth.getInstance();
+        dialog=new ProgressDialog(getActivity());
+        confirmPass=view.findViewById(R.id.confirmPassword);
+        password=view.findViewById(R.id.password);
+        email=view.findViewById(R.id.email);
+        name=view.findViewById(R.id.name);
+        login=view.findViewById(R.id.signUp);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class signUp extends Fragment {
                                                 fragmentListener.registerAndLogin(password.getText().toString().trim());
                                                 firebaseAuth.signInWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim());
                                                 Toast.makeText(getContext(), "Sign Up successful", Toast.LENGTH_SHORT).show();
-                                                customerUser user = new customerUser(name.getText().toString().trim(),firebaseAuth.getCurrentUser().getUid());
+                                                customerUser user=new customerUser(name.getText().toString().trim(),firebaseAuth.getCurrentUser().getUid());
                                                 databaseReference.child("user").child(firebaseAuth.getCurrentUser().getUid()).setValue(user);
                                                 dialog.dismiss();
                                             }
@@ -90,7 +90,7 @@ public class signUp extends Fragment {
 
             }
         });
-        return v;
+        return view;
     }
     @Override
     public void onAttach(@NonNull Context context) {
