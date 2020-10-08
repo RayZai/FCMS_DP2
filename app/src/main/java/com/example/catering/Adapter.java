@@ -73,7 +73,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             numPerson=itemView.findViewById(R.id.numPerson);
             thisView=itemView;
             itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
+            if(admin){  
+                itemView.setOnLongClickListener(this);
+            }
         }
 
         @Override
