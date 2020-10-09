@@ -38,14 +38,14 @@ public class signUp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_sign_up, container, false);
-        firebaseAuth=FirebaseAuth.getInstance();
-        dialog=new ProgressDialog(getActivity());
-        confirmPass=view.findViewById(R.id.confirmPassword);
-        password=view.findViewById(R.id.password);
-        email=view.findViewById(R.id.email);
-        name=view.findViewById(R.id.name);
-        login=view.findViewById(R.id.signUp);
+        View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        firebaseAuth = FirebaseAuth.getInstance();
+        dialog = new ProgressDialog(getActivity());
+        confirmPass = v.findViewById(R.id.confirmPassword);
+        password = v.findViewById(R.id.password);
+        email = v.findViewById(R.id.email);
+        name = v.findViewById(R.id.name);
+        login = v.findViewById(R.id.signUp);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class signUp extends Fragment {
                 if(!password.getText().toString().matches("") && !email.getText().toString().matches("") && !confirmPass.getText().toString().matches("") && !name.getText().toString().matches("")){
                     if(password.getText().toString().length()>=6){
                         if(password.getText().toString().trim().equals(confirmPass.getText().toString().trim())){
-                            dialog.setMessage("Signing up");
+                            dialog.setMessage("Signing up user");
                             dialog.show();
                             firebaseAuth.createUserWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim())
                                     .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -74,23 +74,23 @@ public class signUp extends Fragment {
                                         }
                                     });
                         }
+                        //run when confirm password is not matching with the set password
                         else{
                             Toast.makeText(getContext(), "Password and confirm password not same", Toast.LENGTH_SHORT).show();
                         }
-
                     }
+                    //run when creating password not reached 5 characters
                     else{
                         Toast.makeText(getContext(), "Password must be more than 5 character", Toast.LENGTH_SHORT).show();
                     }
-
                 }
+                //run when all section is not filled in
                 else{
                     Toast.makeText(getContext(), "Please fill in all section", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-        return view;
+        return v;
     }
     @Override
     public void onAttach(@NonNull Context context) {
