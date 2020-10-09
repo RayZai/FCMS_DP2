@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class resetPass extends AppCompatActivity {
-    private EditText email;
+    private EditText emailField;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog dialog;
     @Override
