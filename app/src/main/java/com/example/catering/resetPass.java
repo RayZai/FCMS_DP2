@@ -27,26 +27,32 @@ public class resetPass extends AppCompatActivity {
         dialog=new ProgressDialog(this);
     }
 
-    public void resetPass(View view) {
+     public void resetPass(View view) {
         dialog.setMessage("Loading");
         dialog.show();
-        if(!email.getText().toString().trim().matches("")){
-            firebaseAuth.sendPasswordResetEmail(email.getText().toString().trim())
+        //This is used to check whether a email is entered into the text box
+        if(!emailField.getText().toString().trim().matches("")){
+            //this is make the program to send an email to the email address given by the user
+            firebaseAuth.sendPasswordResetEmail(emailField.getText().toString().trim())
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            //the Toast will display text indicating that the email to reset password is sent.
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "Reset email sent", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                                 setResult(0,new Intent());
                                 finish();
                             }
+                            //the Toast will display text indicating that the email to reset password is not sent and will ask the
+                            //user to try to send the reset password email again.
                             else{
                                 Toast.makeText(getApplicationContext(), "Reset email send failed.Please try again", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }
+        // This will oocur when the user did not enter any email in the text box
         else{
             dialog.dismiss();
             Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
