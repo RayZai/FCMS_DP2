@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class login extends Fragment {
-    private EditText email,password;
+    private EditText emailField,passwordField;
     private TextView signIn,resetPass;
     private TextView signUp;
     private onFragmentListener fragmentListener;
