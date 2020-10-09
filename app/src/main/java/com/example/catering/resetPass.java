@@ -22,7 +22,7 @@ public class resetPass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reset_pass);
-        email=findViewById(R.id.email);
+        emailField=findViewById(R.id.email);
         firebaseAuth=FirebaseAuth.getInstance();
         dialog=new ProgressDialog(this);
     }
