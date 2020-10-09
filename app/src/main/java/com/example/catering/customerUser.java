@@ -19,37 +19,47 @@ public class customerUser {
         orderHistory.add(sampleSave);
     }
 
+    //get name
     public String getName() {
         return name;
     }
 
+    //set name
     public void setName(String name) {
         this.name = name;
     }
 
+    //get membership
     public boolean isMembership() {
         return membership;
     }
 
+    //set membership
     public void setMembership(boolean membership) {
         this.membership = membership;
     }
 
+    //get order history
     public ArrayList<order> getOrderHistory() {
         return orderHistory;
     }
 
+    //set order history
     public void setOrderHistory(ArrayList<order> orderHistory) {
         this.orderHistory = orderHistory;
     }
+    
+    //add order
     public void addOrder(order order){
         this.orderHistory.add(order);
     }
 
+    //get id
     public String getId() {
         return id;
     }
 
+    //set id
     public void setId(String id) {
         this.id = id;
     }
