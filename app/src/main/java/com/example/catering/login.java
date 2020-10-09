@@ -39,30 +39,38 @@ public class login extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_login, container, false);
+        //instance of the firebase Authencation
         firebaseAuth=FirebaseAuth.getInstance();
         dialog=new ProgressDialog(getActivity());
-        email=view.findViewById(R.id.email);
-        password=view.findViewById(R.id.password);
+
+        emailField=view.findViewById(R.id.email);
+        passwordField=view.findViewById(R.id.password);
         signIn=view.findViewById(R.id.loginText);
         signUp=view.findViewById(R.id.noAccount);
-        email.setText("");
-        password.setText("");
+        emailField.setText("");
+        passwordField.setText("");
         resetPass=view.findViewById(R.id.resetPass);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!email.getText().toString().matches("") || !password.getText().toString().matches("")){
+                //Checks whether the email and password is entered
+                if(!emailField.getText().toString().matches("") || !passwordField.getText().toString().matches("")){
                     dialog.setMessage("Logging in");
                     dialog.show();
-                    firebaseAuth.signInWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim())
+                    firebaseAuth.signInWithEmailAndPassword(emailField.getText().toString().trim(),passwordField.getText().toString().trim())
                             .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                    //the task is used to check whether if the email and password matches any
+                                    //of the ones that is stored in the firebase
+                                    //if the login is successful, the user will be logged into the system.
                                     if(task.isSuccessful()){
-                                        fragmentListener.login(password.getText().toString().trim());
+                                        fragmentListener.login(passwordField.getText().toString().trim());
                                         dialog.dismiss();
                                         Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
                                     }
+                                    //or it will show the user that the email or password is incorrect and ask the user to
+                                    //login again.
                                     else{
                                         dialog.dismiss();
                                         Toast.makeText(getContext(), "Email or password is incorrect", Toast.LENGTH_SHORT).show();
@@ -70,6 +78,7 @@ public class login extends Fragment {
                                 }
                             });
                 }
+                //this message will be displayed if the user does not enter the email or password.
                 else{
                     Toast.makeText(getContext(), "Please enter email and password", Toast.LENGTH_SHORT).show();
                 }
@@ -77,12 +86,16 @@ public class login extends Fragment {
 
             }
         });
+
+        //By pressing the signUp text, it will take the user to the sign up page
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentListener.register();
             }
         });
+        // By pressing the forgot password text, it will take the user to the reset password page
+        //where they can change the password using their email
         resetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
