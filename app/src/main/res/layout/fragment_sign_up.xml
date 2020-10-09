@@ -16,7 +16,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            //image logo of catering services
+
+            <!--image logo of catering services-->
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 />
 
-            //full name textbox
+            <!--full name textbox-->
             <EditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
@@ -41,7 +42,7 @@
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
 
-            //email textbox
+            <!--email textbox-->
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
 
-            //password textbox
+            <!--password textbox-->
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
 
-            //confirm password textbox
+            <!--confirm password textbox-->
             <EditText
                 android:id="@+id/confirmPassword"
                 android:layout_width="match_parent"
@@ -80,7 +81,7 @@
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
 
-            //sign up button
+            <!--sign up button-->
             <TextView
                 android:id="@+id/signUp"
                 android:layout_width="match_parent"
@@ -96,8 +97,6 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
