@@ -70,8 +70,19 @@ public class book extends AppCompatActivity {
         databaseReference.addValueEventListener(valueEventListener);
 
     }
-    public void saveToDatabase(View view){
-       
+    
+     public void saveToDatabase(View view){
+        add=true;
+        String changedAddress=address.getText().toString().trim();
+        String changedTime=time.getText().toString().trim().substring(time.getText().toString().trim().indexOf(": ") + 1);
+        changedDate=date.getText().toString().trim().substring(date.getText().toString().trim().indexOf(": ") + 1);
+        add=true;
+        for(String bookedDate:bookedList){
+            if(bookedDate.matches(changedDate.trim())){
+                add=false;
+            }
+        }
+        if(add){
             String key =  databaseReference.push().getKey();
             order tempoOrder=new order();
             tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
@@ -80,8 +91,11 @@ public class book extends AppCompatActivity {
             setResult(0,new Intent());
             finish();
         }
-        
+        else{
+            Toast.makeText(getApplicationContext(), "Selected date is booked by others", Toast.LENGTH_SHORT).show();
+        }
     }
+ 
     public void editDuration(View view) {
         Calendar calendar = Calendar.getInstance();
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
