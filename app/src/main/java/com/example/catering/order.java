@@ -1,12 +1,41 @@
 package com.example.catering;
 
-public class order {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class order implements Parcelable {
     private String id,transactionNum,orderNum,date,address,time,userId,orderStatus,name;
     private service itemOrder;
     public order(){
 
     }
-    public order createOrder(String transactionNum, String orderNum, service itemOrder,String date,String address,String time,String userId){
+
+    protected order(Parcel in) {
+        id = in.readString();
+        transactionNum = in.readString();
+        orderNum = in.readString();
+        date = in.readString();
+        address = in.readString();
+        time = in.readString();
+        userId = in.readString();
+        orderStatus = in.readString();
+        name = in.readString();
+        itemOrder = in.readParcelable(service.class.getClassLoader());
+    }
+
+    public static final Creator<order> CREATOR = new Creator<order>() {
+        @Override
+        public order createFromParcel(Parcel in) {
+            return new order(in);
+        }
+
+        @Override
+        public order[] newArray(int size) {
+            return new order[size];
+        }
+    };
+
+    public order createOrder(String transactionNum, String orderNum, service itemOrder, String date, String address, String time, String userId){
         this.transactionNum = transactionNum;
         this.orderNum = orderNum;
         this.itemOrder = itemOrder;
@@ -104,5 +133,24 @@ public class order {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(transactionNum);
+        dest.writeString(orderNum);
+        dest.writeString(date);
+        dest.writeString(address);
+        dest.writeString(time);
+        dest.writeString(userId);
+        dest.writeString(orderStatus);
+        dest.writeString(name);
+        dest.writeParcelable(itemOrder, flags);
     }
 }
