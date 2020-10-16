@@ -70,7 +70,7 @@ public class book extends AppCompatActivity {
         databaseReference.addValueEventListener(valueEventListener);
 
     }
-    
+    //to determine wether the booking will be declined or succcessful
      public void saveToDatabase(View view){
         add=true;
         String changedAddress=address.getText().toString().trim();
@@ -83,6 +83,7 @@ public class book extends AppCompatActivity {
             }
         }
         if(add){
+            //if add is true and the date can be booked, a pop up toast message will alert that the booking has been successful
             String key =  databaseReference.push().getKey();
             order tempoOrder=new order();
             tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
@@ -92,6 +93,7 @@ public class book extends AppCompatActivity {
             finish();
         }
         else{
+            //if add is false and the dates cannot be booked, toast message will appear and alert that the selected date has been booked
             Toast.makeText(getApplicationContext(), "Selected date is booked by others", Toast.LENGTH_SHORT).show();
         }
     }
