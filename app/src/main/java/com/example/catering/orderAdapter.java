@@ -34,24 +34,24 @@ public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ViewHolder> 
     public orderAdapter(ArrayList<order> orderList) {
         final String adminEmail="admin@gmail.com";
         this.orderList = orderList;
-        firebaseAuth= FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser =firebaseAuth.getCurrentUser();
-        if(firebaseUser!=null){
-            admin= firebaseUser.getEmail().matches(adminEmail);
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+            admin = firebaseUser.getEmail().matches(adminEmail);
         }
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.order_row_layout,parent,false);
-        context=parent.getContext();
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_row_layout, parent,false);
+        context = parent.getContext();
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        order order=orderList.get(position);
+        order order = orderList.get(position);
         holder.name.setText(order.getName());
         holder.address.setText(order.getAddress());
         holder.date.setText(order.getDate());
@@ -66,20 +66,38 @@ public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ViewHolder> 
         return orderList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name,date,time,status,address;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView name, date, time, status, address;
         public ConstraintLayout history;
+
+        //initialised the items in the xml of the order page
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.name);
-            date=itemView.findViewById(R.id.date);
-            address=itemView.findViewById(R.id.address);
-            time=itemView.findViewById(R.id.time);
-            status=itemView.findViewById(R.id.status);
-            history= itemView.findViewById(R.id.history);
+            name = itemView.findViewById(R.id.name);
+            date = itemView.findViewById(R.id.date);
+            address = itemView.findViewById(R.id.address);
+            time = itemView.findViewById(R.id.time);
+            status = itemView.findViewById(R.id.status);
+            history = itemView.findViewById(R.id.history);
+
+            if (admin){
+                itemView.setOnClickListener(this);
+            }
         }
 
-        
+        //carry bundle data from this to the changeOrderStatus java class
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("order", orderList.get(position));
+            Intent intent = new Intent();
+            intent.putExtras(bundle);
+            //direct activity to changeOrderStatus
+            Activity act = (Activity)context;
+            intent.setClass(context, changeOrderStatus.class);
+            act.startActivityForResult(intent, 0);
+        }
     }
 
 }
