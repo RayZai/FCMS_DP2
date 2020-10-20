@@ -34,4 +34,9 @@
     <string name="foodList">Food List :</string>
     <string name="food">Food List</string>
     <string name="noFood">No food inserted</string>
+    <string-array name="status">
+        <item>Preparing</item>
+        <item>Delivering</item>
+        <item>Completed</item>
+    </string-array>
 </resources>
