@@ -98,7 +98,7 @@ public class userFoodDetails extends AppCompatActivity {
         bundle.putParcelable("service",service);
         Intent intent=new Intent();
         intent.putExtras(bundle);
-        /*intent.setClass(getApplicationContext(),book.class);
-        startActivityForResult(intent, 0);*/
+        intent.setClass(getApplicationContext(),book.class);
+        startActivityForResult(intent, 0);
     }
 }
