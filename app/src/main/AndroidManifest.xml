@@ -14,6 +14,7 @@
         <activity android:name=".userFoodDetails" />
         <activity android:name=".foodList" />
         <activity android:name=".addService" />
+        <activity android:name=".changeOrderStatus" />
         <activity
             android:name=".serviceDetails"
             android:label="Service Details"/>
