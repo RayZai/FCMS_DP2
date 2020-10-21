@@ -87,12 +87,12 @@ public class changeOrderStatus extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         status.setText(parent.getItemAtPosition(position).toString().trim());
-        changeStatus.setVisibility(View.GONE);
+        changeStatus.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        changeStatus.setVisibility(View.GONE);
+        changeStatus.setVisibility(View.INVISIBLE);
     }
 
     //trigger the spinner in the update order page
