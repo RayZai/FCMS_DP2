@@ -41,7 +41,7 @@ public class addService extends AppCompatActivity{
     public void create(View view) {
         if(!serviceName.getText().toString().matches("")&& !price.getText().toString().matches("")&&!numPerson.getText().toString().matches("") && !profit.getText().toString().matches("")){
             String key =  databaseReference.push().getKey();
-            tempoService=tempoService.createService(serviceName.getText().toString().trim(),key.trim(),tempoService.getFoodList(),price.getText().toString().trim(),numPerson.getText().toString().trim(),price.getText().toString());
+            tempoService=tempoService.createService(serviceName.getText().toString().trim(),key.trim(),tempoService.getFoodList(),price.getText().toString().trim(),numPerson.getText().toString().trim(),profit.getText().toString());
             databaseReference.child("service").child(key).setValue(tempoService);
             Toast.makeText(addService.this, "Complete", Toast.LENGTH_SHORT).show();
             setResult(0);
