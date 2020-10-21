@@ -65,6 +65,7 @@ public class foodList extends AppCompatActivity {
                     foodList.add(" ");
                 }
                 adapter=new foodAdapter(foodList,services,admin);
+                services.setFoodList(foodList);
                 recyclerView.setAdapter(adapter);
             }
 
