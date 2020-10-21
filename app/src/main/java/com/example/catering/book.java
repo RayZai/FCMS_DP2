@@ -84,13 +84,18 @@ public class book extends AppCompatActivity {
         }
         if(add){
             //if add is true and the date can be booked, a pop up toast message will alert that the booking has been successful
-            String key =  databaseReference.push().getKey();
-            order tempoOrder=new order();
-            tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
-            databaseReference.child("order").child(key).setValue(tempoOrder);
-            Toast.makeText(getApplicationContext(), "Booked", Toast.LENGTH_SHORT).show();
-            setResult(0,new Intent());
-            finish();
+            if(!changedTime.matches("")&& !changedDate.matches("") && !changedAddress.matches("")){
+                String key =  databaseReference.push().getKey();
+                order tempoOrder=new order();
+                tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
+                databaseReference.child("order").child(key).setValue(tempoOrder);
+                Toast.makeText(getApplicationContext(), "Booked", Toast.LENGTH_SHORT).show();
+                setResult(0,new Intent());
+                finish();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Please fill in all section", Toast.LENGTH_SHORT).show();
+            }
         }
         else{
             //if add is false and the dates cannot be booked, toast message will appear and alert that the selected date has been booked
