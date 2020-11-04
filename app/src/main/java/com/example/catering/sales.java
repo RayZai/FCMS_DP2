@@ -59,7 +59,6 @@ public class sales extends Fragment{
         dialog.show();
         valueEventListener = new ValueEventListener() {
             @Override
-            @AddTrace(name = "onCreateTrace")
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dayList=new ArrayList<>();
                 monthList=new ArrayList<>();
