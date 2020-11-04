@@ -26,8 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import com.google.firebase.perf.FirebasePerformance;
-import com.google.firebase.perf.metrics.AddTrace;
+
 
 public class sales extends Fragment{
     private RecyclerView today,month;
@@ -49,34 +48,9 @@ public class sales extends Fragment{
         month=root.findViewById(R.id.monthList);
         date=root.findViewById(R.id.date);
         cardback1=root.findViewById(R.id.cardBack1);
-        cardback1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(dayList.size()!=0){
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelableArrayList("sales",dayList);
-                    Intent intent = new Intent();
-                    intent.putExtras(bundle);
-                    intent.setClass(getContext(), salesGraph.class);
-                    startActivityForResult(intent, 0);
-                }
-            }
-        });
+       
         cardBack2=root.findViewById(R.id.cardBack3);
-        cardBack2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(monthList.size()!=0){
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelableArrayList("sales",monthList);
-                    Intent intent = new Intent();
-                    intent.putExtras(bundle);
-                    intent.setClass(getContext(), salesGraph.class);
-                    startActivityForResult(intent, 0);
-                }
-
-            }
-        });
+        
         today.setLayoutManager(new LinearLayoutManager(getActivity()));
         month.setLayoutManager(new LinearLayoutManager(getActivity()));
         databaseReference= FirebaseDatabase.getInstance().getReference();
