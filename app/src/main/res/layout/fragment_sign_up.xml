@@ -38,6 +38,16 @@
                 android:inputType="textPersonName"
                 android:hint="@string/fullName"
                 app:layout_constraintTop_toBottomOf="@id/logo"
+                app:layout_constraintBottom_toTopOf="@id/dob"
+                style="@style/form"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Date of birth"
+                app:layout_constraintTop_toBottomOf="@id/name"
                 app:layout_constraintBottom_toTopOf="@id/email"
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
@@ -50,7 +60,7 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/dob"
                 app:layout_constraintBottom_toTopOf="@id/password"
                 style="@style/form"
                 android:layout_marginTop="20dp"/>
