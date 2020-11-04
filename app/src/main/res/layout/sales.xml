@@ -11,10 +11,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Date: "
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/cardBack1"
+                style="@style/form"
+                android:layout_marginTop="20dp"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -65,57 +75,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 app:layout_constraintTop_toBottomOf="@id/cardBack1"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/card"
-                android:padding="20dp"
-                android:id="@+id/cardBack2"
-                >
-                <TextView
-                    android:id="@+id/week"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:textColor="@color/service"
-                    android:textSize="40sp"
-                    android:text="Weekly"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/weekList"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintRight_toLeftOf="@id/weeklyProfit"
-                    android:layout_marginRight="30dp"
-                    android:textColor="@color/service"
-                    android:textSize="20sp"
-                    android:text="Amount"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-                <TextView
-                    android:id="@+id/weeklyProfit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:textColor="@color/service"
-                    android:textSize="20sp"
-                    android:text="Profit"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/weekList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/week"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                app:layout_constraintTop_toBottomOf="@id/cardBack2"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
