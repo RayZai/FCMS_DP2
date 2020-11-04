@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,8 +38,9 @@ public class book extends AppCompatActivity {
     private long i;
     private service service;
     private String changedDate;
-    private boolean add;
+    private boolean add,membership=false,coupon=false,birthday=false;
     private ArrayList<String> bookedList;
+    private String price,userMonth,userDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,19 @@ public class book extends AppCompatActivity {
                         bookedList.add(ds.child("date").getValue(String.class));
                     }
                 }
+                for(DataSnapshot ds : dataSnapshot.child("user").getChildren()) {
+                    if (ds.child("id").getValue(String.class).equals(firebaseAuth.getCurrentUser().getUid())) {
+                        String tempoYear=ds.child("date").getValue(String.class);
+                        userDay=tempoYear.substring(0,tempoYear.indexOf(" ") + 1);
+                        tempoYear=tempoYear.substring(tempoYear.indexOf(" ")+1);
+                        userMonth=tempoYear.substring(0,tempoYear.indexOf(" ") + 1);
+                        membership=ds.child("membership").getValue(Boolean.class);
+                        if(membership){
+                            coupon=ds.child("coupon").getValue(Boolean.class);
+                        }
+
+                    }
+                }
             }
 
             @Override
@@ -70,8 +86,41 @@ public class book extends AppCompatActivity {
         databaseReference.addValueEventListener(valueEventListener);
 
     }
+    public void confirm(View v){
+        String changedTime=time.getText().toString().trim().substring(time.getText().toString().trim().indexOf(": ") + 1);
+        changedDate=date.getText().toString().trim().substring(date.getText().toString().trim().indexOf(": ") + 1);
+        price=service.getPrice();
+        String confirm="Address: "+address.getText().toString().trim()+"\nTime: "+changedTime+"\nDate: "+changedDate+"\nPrice: "+price+"\n";
+        String currentMonth,currentDay;
+        Calendar current;
+        current=Calendar.getInstance();
+        currentMonth=String.valueOf(current.get(Calendar.MONTH));
+        currentDay=String.valueOf(current.get(Calendar.DAY_OF_MONTH));
+        if(userDay.equals(currentDay)&&userMonth.equals(currentMonth)){
+            birthday=true;
+        }
+        if(birthday&&membership){
+            confirm+=("Birthday month with 20% discount\n");
+            price=String.valueOf(Integer.parseInt(price)*0.8);
+        }
+        if(coupon){
+            confirm+=("Coupon with 20% discount\n");
+            price=String.valueOf(Integer.parseInt(price)*0.8);
+            confirm+=("Total price: "+price);
+        }
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Booking")
+                .setMessage(confirm)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        saveToDatabase();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
+    }
     //to determine wether the booking will be declined or succcessful
-     public void saveToDatabase(View view){
+     public void saveToDatabase(){
         add=true;
         String changedAddress=address.getText().toString().trim();
         String changedTime=time.getText().toString().trim().substring(time.getText().toString().trim().indexOf(": ") + 1);
@@ -140,7 +189,7 @@ public class book extends AppCompatActivity {
         bundle.putInt("month", calender.get(Calendar.MONTH));
         bundle.putInt("day", calender.get(Calendar.DAY_OF_MONTH));
         tempoDate.setArguments(bundle);
-        tempoDate.setCallBack(ondate);
+        tempoDate.setCallBack(ondate,true);
         if(getFragmentManager()!=null){
             tempoDate.show(fragment, "Date Picker");
         }
