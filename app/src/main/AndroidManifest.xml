@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".book" />
+        <activity android:name=".membership" />
         <activity android:name=".resetPass" />
         <activity android:name=".userFoodDetails" />
         <activity android:name=".foodList" />
