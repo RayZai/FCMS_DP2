@@ -134,7 +134,7 @@ public class signUp extends Fragment {
             c.set(Calendar.MONTH,month);
             c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             String[] monthName = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-            dob.setText("Date: "+String.valueOf(dayOfMonth)+" "+monthName[month]+" "+String.valueOf(year));
+            dob.setText(String.valueOf(dayOfMonth)+" "+monthName[month]+" "+String.valueOf(year));
 
         }
     };
