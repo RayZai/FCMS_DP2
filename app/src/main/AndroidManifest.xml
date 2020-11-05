@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".salesGraph"/>
         <activity android:name=".book" />
         <activity android:name=".membership" />
         <activity android:name=".resetPass" />

@@ -9,11 +9,11 @@ import androidx.fragment.app.DialogFragment;
 public class calenderFrag extends DialogFragment {
     DatePickerDialog.OnDateSetListener ondateSet;
     private int year, month, day;
-    private boolean type=true;
+    private int type;
 
     public calenderFrag() {}
 
-    public void setCallBack(DatePickerDialog.OnDateSetListener ondate,boolean type) {
+    public void setCallBack(DatePickerDialog.OnDateSetListener ondate,int type) {
         this.type=type;
         ondateSet = ondate;
     }
@@ -29,10 +29,10 @@ public class calenderFrag extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         DatePickerDialog datePicker = new DatePickerDialog(getActivity(),ondateSet, year, month, day);
-        if(type){
+        if(type==0){
             datePicker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         }
-        else{
+        else if(type==1){
             datePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
         }
 

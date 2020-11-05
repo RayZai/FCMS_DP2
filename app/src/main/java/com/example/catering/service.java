@@ -38,6 +38,7 @@ public class service implements Parcelable {
         numPerson = in.readString();
         profit=in.readString();
         foodList = in.createStringArrayList();
+        amountSold=in.readInt();
     }
     public void addSampleToList(){
         this.foodList=new ArrayList<>();
@@ -135,6 +136,7 @@ public class service implements Parcelable {
         dest.writeString(numPerson);
         dest.writeString(profit);
         dest.writeStringList(foodList);
+        dest.writeInt(amountSold);
     }
 
 }

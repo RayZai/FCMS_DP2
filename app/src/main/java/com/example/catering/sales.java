@@ -47,7 +47,35 @@ public class sales extends Fragment{
         today=root.findViewById(R.id.todayList);
         month=root.findViewById(R.id.monthList);
         date=root.findViewById(R.id.date);
-       
+        cardback1=root.findViewById(R.id.cardBack1);
+        cardback1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dayList.size()!=0){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelableArrayList("sales",dayList);
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+                    intent.setClass(getContext(), salesGraph.class);
+                    startActivityForResult(intent, 0);
+                }
+            }
+        });
+        cardBack2=root.findViewById(R.id.cardBack3);
+        cardBack2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(monthList.size()!=0){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelableArrayList("sales",monthList);
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+                    intent.setClass(getContext(), salesGraph.class);
+                    startActivityForResult(intent, 0);
+                }
+
+            }
+        });
         today.setLayoutManager(new LinearLayoutManager(getActivity()));
         month.setLayoutManager(new LinearLayoutManager(getActivity()));
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -167,7 +195,7 @@ public class sales extends Fragment{
                 bundle.putInt("month", c.get(Calendar.MONTH));
                 bundle.putInt("day", c.get(Calendar.DAY_OF_MONTH));
                 tempoDate.setArguments(bundle);
-                tempoDate.setCallBack(ondate,true);
+                tempoDate.setCallBack(ondate,2);
                 if(getFragmentManager()!=null){
                     tempoDate.show(fragment, "Date Picker");
                 }
