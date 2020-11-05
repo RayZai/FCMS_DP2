@@ -139,8 +139,12 @@ public class book extends AppCompatActivity {
                 tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
                 databaseReference.child("order").child(key).setValue(tempoOrder);
                 Toast.makeText(getApplicationContext(), "Booked", Toast.LENGTH_SHORT).show();
-                setResult(0,new Intent());
-                finish();
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("service",service);
+                Intent intent=new Intent();
+                intent.putExtras(bundle);
+                intent.setClass(getApplicationContext(),payment.class);
+                startActivityForResult(intent, 0);
             }
             else{
                 Toast.makeText(getApplicationContext(), "Please fill in all section", Toast.LENGTH_SHORT).show();
@@ -207,4 +211,19 @@ public class book extends AppCompatActivity {
 
         }
     };
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data!=null){
+            if(data.getExtras().getBoolean("payment")) {
+                if(coupon){
+                    databaseReference.child("user").child(firebaseAuth.getCurrentUser().getUid()).child("coupon").setValue(false);
+                }
+                Toast.makeText(getApplicationContext(), "Book successful", Toast.LENGTH_SHORT).show();
+                setResult(0, new Intent());
+                finish();
+            }
+        }
+
+    }
 }
