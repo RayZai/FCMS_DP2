@@ -189,7 +189,7 @@ public class book extends AppCompatActivity {
         bundle.putInt("month", calender.get(Calendar.MONTH));
         bundle.putInt("day", calender.get(Calendar.DAY_OF_MONTH));
         tempoDate.setArguments(bundle);
-        tempoDate.setCallBack(ondate,true);
+        tempoDate.setCallBack(ondate,0);
         if(getFragmentManager()!=null){
             tempoDate.show(fragment, "Date Picker");
         }
