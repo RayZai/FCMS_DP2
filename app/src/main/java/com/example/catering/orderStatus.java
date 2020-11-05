@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,11 +33,62 @@ public class orderStatus extends Fragment{
     private ArrayList<order> orderList;
     private FirebaseAuth firebaseAuth;
     private boolean admin;
-    private String name,address,time,status,date,transactionNum;
+    private EditText search; 
+    private TextView searchText; 
+    private String name,address,time,status,date,transactionNum, orderNum; 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.order, container, false);
         final String adminEmail="admin@gmail.com";
+        //here i am
+        search=root.findViewById(R.id.search);
+        searchText=root.findViewById(R.id.searchText);
+        searchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(search.length()!=0){
+                    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+                    dialog.setMessage("Loading");
+                    dialog.show();
+                    ValueEventListener valueEventListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            orderList=new ArrayList<>();
+                            for(DataSnapshot ds : dataSnapshot.child("order").getChildren()) {
+                                if(admin || ds.child("userId").getValue(String.class).matches(firebaseAuth.getCurrentUser().getUid())) {
+                                    if(ds.child("transactionNum").getValue(String.class).equals(search.getText().toString().trim()) || ds.child("orderNum").getValue(String.class).equals(search.getText().toString().trim())){
+
+                                        address = ds.child("address").getValue(String.class);
+                                        date = ds.child("date").getValue(String.class);
+                                        status = ds.child("orderStatus").getValue(String.class);
+                                        time = ds.child("time").getValue(String.class);
+                                        name = ds.child("itemOrder").child("name").getValue(String.class);
+                                        address=ds.child("address").getValue(String.class);
+                                        transactionNum=ds.child("transactionNum").getValue(String.class);
+                                        orderNum=ds.child("orderNum").getValue(String.class);
+                                        order tempoOrder = new order(); // i change this
+                                        tempoOrder.createTempoOrder(name, date, time, address, status,transactionNum,orderNum); 
+                                        orderList.add(tempoOrder);
+                                    }
+                                }
+                            }
+                            adapter=new orderAdapter(orderList);
+                            recyclerView.setAdapter(adapter);
+                            dialog.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {}
+                    };
+                    databaseReference.addValueEventListener(valueEventListener);
+                }
+                else{
+                    getFromDatabase();
+                    Toast.makeText(getContext(), "Please fill the search section before searching", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }); //here i am
         dialog=new ProgressDialog(getActivity());
         recyclerView=root.findViewById(R.id.orderList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -69,7 +123,7 @@ public class orderStatus extends Fragment{
                         address=ds.child("address").getValue(String.class);
                         transactionNum=ds.child("transactionNum").getValue(String.class);
                         order tempoOrder = new order();
-                        tempoOrder.createTempoOrder(name, date, time, address, status,transactionNum);
+                        tempoOrder.createTempoOrder(name, date, time, address, status,transactionNum,orderNum); 
                         orderList.add(tempoOrder);
                     }
                 }

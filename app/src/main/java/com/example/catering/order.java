@@ -46,8 +46,9 @@ public class order implements Parcelable {
         this.orderStatus="booked";
         return this;
     }
-    public order createTempoOrder(String name,String date, String time,String address,String status,String transactionNum){
+    public order createTempoOrder(String name,String date, String time,String address,String status,String transactionNum,String orderNum){
         this.transactionNum=transactionNum;
+        this.orderNum=orderNum;
         this.date=date;
         this.address=address;
         this.time=time;
