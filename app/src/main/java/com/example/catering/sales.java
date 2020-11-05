@@ -195,7 +195,7 @@ public class sales extends Fragment{
                 bundle.putInt("month", c.get(Calendar.MONTH));
                 bundle.putInt("day", c.get(Calendar.DAY_OF_MONTH));
                 tempoDate.setArguments(bundle);
-                tempoDate.setCallBack(ondate,true);
+                tempoDate.setCallBack(ondate,2);
                 if(getFragmentManager()!=null){
                     tempoDate.show(fragment, "Date Picker");
                 }
