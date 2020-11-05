@@ -63,7 +63,7 @@ public class book extends AppCompatActivity {
                 }
                 for(DataSnapshot ds : dataSnapshot.child("user").getChildren()) {
                     if (ds.child("id").getValue(String.class).equals(firebaseAuth.getCurrentUser().getUid())) {
-                        String tempoYear=ds.child("date").getValue(String.class);
+                        String tempoYear=ds.child("dob").getValue(String.class);
                         userDay=tempoYear.substring(0,tempoYear.indexOf(" ") + 1);
                         tempoYear=tempoYear.substring(tempoYear.indexOf(" ")+1);
                         userMonth=tempoYear.substring(0,tempoYear.indexOf(" ") + 1);
