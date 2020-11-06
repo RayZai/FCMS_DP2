@@ -29,6 +29,7 @@ public class listOfService extends Fragment{
     private ArrayList<service> serviceArrayList,sortedList;
     private FirebaseAuth firebaseAuth;
     private boolean admin;
+    private boolean premium=false;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.list_of_service, container, false);
@@ -60,6 +61,16 @@ public class listOfService extends Fragment{
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.child("user").getChildren()) {
+                    if (ds.child("id").getValue(String.class).equals(firebaseAuth.getCurrentUser().getUid())) {
+                        if(ds.child("membership").getValue(Boolean.class)){
+                            premium=true;
+                        }
+                        else{
+                            premium=false;
+                        }
+                    }
+                }
                 serviceArrayList=new ArrayList<>();
                 ArrayList<String> foodList;
                 int i;
@@ -76,9 +87,18 @@ public class listOfService extends Fragment{
                     String price=ds.child("price").getValue(String.class).trim();
                     String numPerson=ds.child("numPerson").getValue(String.class).trim();
                     String profit=ds.child("profit").getValue(String.class).trim();
+                    String isPremium=ds.child("premium").getValue(String.class).trim();
                     service tempoService=new service();
-                    tempoService=tempoService.createService(name,id,foodList,price,numPerson,profit);
-                    serviceArrayList.add(tempoService);
+                    tempoService=tempoService.createService(name,id,foodList,price,numPerson,profit,isPremium);
+                    if((ds.child("premium").getValue(String.class).trim().equals("1")&&premium)||admin){
+                        serviceArrayList.add(tempoService);
+                    }
+                    else{
+                        if(ds.child("premium").getValue(String.class).trim().equals("0")){
+                            serviceArrayList.add(tempoService);
+                        }
+
+                    }
                 }
                 adapter=new Adapter(serviceArrayList);
                 recyclerView.setAdapter(adapter);

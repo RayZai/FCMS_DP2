@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,9 @@ public class serviceDetails extends AppCompatActivity {
     private ImageView image;
     private ProgressDialog dialog;
     private String tempoText=" ";
+    private String premium="0";
+    private CheckBox checkBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class serviceDetails extends AppCompatActivity {
         profit=findViewById(R.id.profit);
         profitEdit=findViewById(R.id.profitEdit);
         edit=findViewById(R.id.edit);
+        checkBox=findViewById(R.id.premiumCheck);
 
         if(bundle!=null){
             serv=bundle.getParcelable("service");
@@ -50,10 +55,28 @@ public class serviceDetails extends AppCompatActivity {
             price.setText("RM: "+serv.getPrice());
             numPerson.setText("Number of person: "+serv.getNumPerson());
             profit.setText("Profit: "+serv.getProfit());
+            if(serv.getPremium()=="1"){
+                checkBox.setChecked(true);
+            }
+            else {
+                checkBox.setChecked(false);
+            }
         }
 
     }
+    public void premiumCheck(View v){
+        if(editing){
+            if(checkBox.isChecked()){
+                checkBox.setChecked(false);
+                premium="0";
+            }
+            else{
+                checkBox.setChecked(true);
+                premium="1";
+            }
+        }
 
+    }
     public void startEdit(View view) {
         if(editing==false){
             edit.setText(R.string.done);
@@ -109,7 +132,7 @@ public class serviceDetails extends AppCompatActivity {
         String changedNumPerson=numPerson.getText().toString().trim().substring(numPerson.getText().toString().trim().indexOf(": ") + 1);
         String changedProfit=profit.getText().toString().trim().substring(profit.getText().toString().trim().indexOf(": ") + 1);
         service updatedService=new service();
-        updatedService=updatedService.createService(changedName.trim(),serv.getId().trim(),serv.getFoodList(),changedPrice.trim(),changedNumPerson.trim(),changedProfit.trim());
+        updatedService=updatedService.createService(changedName.trim(),serv.getId().trim(),serv.getFoodList(),changedPrice.trim(),changedNumPerson.trim(),changedProfit.trim(),premium);
         databaseReference.child("service").child(serv.getId()).setValue(updatedService);
         serv=updatedService;
         Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
