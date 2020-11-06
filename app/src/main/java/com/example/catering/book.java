@@ -140,7 +140,7 @@ public class book extends AppCompatActivity {
             if(!changedTime.matches("")&& !changedDate.matches("") && !changedAddress.matches("")){
                 String key =  databaseReference.push().getKey();
                 order tempoOrder=new order();
-                tempoOrder.createOrder(key,Long.toString(i),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
+                tempoOrder.createOrder(key,String.valueOf(bookedList.size()),service,changedDate.trim(),changedAddress.trim(),changedTime.trim(),firebaseAuth.getCurrentUser().getUid());
                 databaseReference.child("order").child(key).setValue(tempoOrder);
                 Toast.makeText(getApplicationContext(), "Booked", Toast.LENGTH_SHORT).show();
                 Bundle bundle=new Bundle();
