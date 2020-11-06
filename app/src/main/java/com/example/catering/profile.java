@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class profile extends Fragment{
-    private TextView name,email,edit;
+    private TextView name,email,edit,premium;
     private EditText emailEdit;
     private boolean editing=false;
     private FirebaseAuth firebaseAuth;
@@ -38,6 +38,15 @@ public class profile extends Fragment{
         edit=root.findViewById(R.id.edit);
         emailEdit=root.findViewById(R.id.emailEdit);
         firebaseAuth=FirebaseAuth.getInstance();
+        member=root.findViewById(R.id.member);
+        member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(getContext(),membership.class);
+                startActivityForResult(intent, 0);
+            }
+        });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
