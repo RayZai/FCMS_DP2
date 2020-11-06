@@ -6,12 +6,12 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class service implements Parcelable {
-    private String name,id,price,numPerson,profit;
+    private String name,id,price,numPerson,profit,premium;
     private int amountSold=0;
     private ArrayList<String> foodList;
     public service(){
     }
-    public service createService(String name,String id,ArrayList<String> foodList,String price,String numPerson,String profit){
+    public service createService(String name,String id,ArrayList<String> foodList,String price,String numPerson,String profit,String premium){
         service tempoService=new service();
         tempoService.setName(name);
         tempoService.setId(id);
@@ -19,6 +19,7 @@ public class service implements Parcelable {
         tempoService.setPrice(price);
         tempoService.setNumPerson(numPerson);
         tempoService.setProfit(profit);
+        tempoService.setPremium(premium);
         return tempoService;
     }
     public service sales(String name,String id,String profit){
@@ -38,6 +39,7 @@ public class service implements Parcelable {
         numPerson = in.readString();
         profit=in.readString();
         foodList = in.createStringArrayList();
+        premium=in.readString();
         amountSold=in.readInt();
     }
     public void addSampleToList(){
@@ -56,6 +58,17 @@ public class service implements Parcelable {
         }
     };
 
+    
+    public String getPremium() {
+        return premium;
+    }
+
+    public void setPremium(String premium) {
+        this.premium = premium;
+    }
+    
+    
+    
     public String getPrice() {
         return price;
     }
@@ -136,6 +149,7 @@ public class service implements Parcelable {
         dest.writeString(numPerson);
         dest.writeString(profit);
         dest.writeStringList(foodList);
+        dest.writeString(premium);
         dest.writeInt(amountSold);
     }
 
