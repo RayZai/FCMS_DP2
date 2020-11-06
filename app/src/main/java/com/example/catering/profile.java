@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class profile extends Fragment{
-    private TextView name,email,edit,premium;
+    private TextView name,email,edit,member;
     private EditText emailEdit;
     private boolean editing=false;
     private FirebaseAuth firebaseAuth;
