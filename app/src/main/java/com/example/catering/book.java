@@ -92,23 +92,26 @@ public class book extends AppCompatActivity {
         changedDate=date.getText().toString().trim().substring(date.getText().toString().trim().indexOf(": ") + 1);
         price=service.getPrice();
         String confirm="Address: "+address.getText().toString().trim()+"\nTime: "+changedTime+"\nDate: "+changedDate+"\nPrice: "+price+"\n";
-        String currentMonth,currentDay;
+        String currentDay;
         Calendar current;
         current=Calendar.getInstance();
-        currentMonth=String.valueOf(current.get(Calendar.MONTH));
         currentDay=String.valueOf(current.get(Calendar.DAY_OF_MONTH));
-        if(userDay.equals(currentDay)&&userMonth.equals(currentMonth)){
+        String[] monthName = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        if(userDay.trim().matches(currentDay.trim())&&userMonth.trim().matches(monthName[current.get(Calendar.MONTH)].trim())){
             birthday=true;
         }
+        int tempoPrice=Integer.parseInt(price);
         if(birthday&&membership){
             confirm+=("Birthday month with 20% discount\n");
-            price=String.valueOf(Integer.parseInt(price)*0.8);
+            tempoPrice*=0.8;
         }
         if(coupon){
             confirm+=("Coupon with 20% discount\n");
-            price=String.valueOf(Integer.parseInt(price)*0.8);
-            confirm+=("Total price: "+price);
+            tempoPrice*=0.8;
+            
         }
+        price=String.valueOf(tempoPrice);
+        confirm+=("Total price: "+price);
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Booking")
                 .setMessage(confirm)
