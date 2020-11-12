@@ -5,66 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login"
-    android:background="#ffffff">
+    android:background="#5C709BF1">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/email"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="275dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="68dp"
+        android:background="@color/allBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"></View>
 
     <EditText
         android:id="@+id/email"
+        style="@style/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedsquare"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@id/password"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        style="@style/form"
-        />
+        tools:layout_editor_absoluteX="20dp" />
 
     <EditText
         android:id="@+id/password"
+        style="@style/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedsquare"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@id/loginText"
         app:layout_constraintTop_toBottomOf="@id/email"
-        style="@style/form"/>
+        tools:layout_editor_absoluteX="20dp" />
+
     <TextView
         android:id="@+id/loginText"
-        android:layout_width="match_parent"
+        style="@style/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedsquarepurple"
+        android:paddingLeft="50dp"
+        android:paddingTop="15dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="15dp"
         android:text="@string/login"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/resetPass"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/resetPass"
-        style="@style/button"
-        />
+        app:layout_constraintTop_toBottomOf="@id/password" />
+
     <TextView
         android:id="@+id/resetPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/resetPass"
+        android:textColor="@color/allBlack"
         app:layout_constraintBottom_toTopOf="@id/noAccount"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginText" />
+
     <TextView
         android:id="@+id/noAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/noAccount"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/resetPass" />
