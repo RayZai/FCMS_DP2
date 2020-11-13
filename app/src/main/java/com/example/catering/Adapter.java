@@ -54,7 +54,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         service serv=serviceList.get(position);
         holder.price.setText("RM "+ serv.getPrice().trim());
         holder.numPerson.setText("Number of person "+ serv.getNumPerson().trim());
-        holder.thisView.setBackgroundResource(R.color.white);
         holder.name.setText(serv.getName().trim());
     }
 
