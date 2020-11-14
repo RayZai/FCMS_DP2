@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Continue"
+        android:background="@drawable/roundedsquare_purple"
         app:layout_constraintTop_toBottomOf="@id/paymentForm"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
