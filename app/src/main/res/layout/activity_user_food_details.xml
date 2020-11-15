@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".userFoodDetails"
     android:id="@+id/background"
-    android:background="@color/grayWhite"
+    android:background="@color/lightblue"
     >
 
     <ScrollView
@@ -36,10 +36,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="90dp"
             app:layout_constraintBottom_toTopOf="@id/numPersonSlot"
             android:padding="20dp">
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,16 +65,18 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:text="@string/numPerson"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="20dp"
             android:paddingLeft="25dp"
@@ -81,50 +84,53 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/card"
-        android:padding="20dp"
-        android:id="@+id/cardBack"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <TextView
-            android:id="@+id/serviceName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:textColor="@color/white"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            <androidx.constraintlayout.widget.ConstraintLayout
 
-        <ImageView
-            android:id="@+id/serviceImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:id="@+id/cardBack"
+                android:layout_width="370dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/card"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
+                <TextView
+                    android:id="@+id/serviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/serviceImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/join"
+                android:background="@drawable/roundedsquare_purple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 style="@style/button"
                 android:text="Book now"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/detailBox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="20dp"
