@@ -4,122 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5C709BF1"
     tools:context=".changeOrderStatus">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <!-- logo -->
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@id/name"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/name"
-                />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
 
             <!-- textbox for name -->
             <TextView
                 android:id="@+id/name"
-                android:text="Name"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/logo"
+                android:layout_margin="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/roundedsquare"
+                android:text="Name"
+                app:layout_constraintBottom_toTopOf="@id/date"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/date"
-                style="@style/form"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/logo" />
 
             <!-- textbox for date -->
             <TextView
                 android:id="@+id/date"
-                android:text="Date"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:text="Date"
+                app:layout_constraintBottom_toTopOf="@id/time"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/time"
-                style="@style/form"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
             <!-- textbox for time -->
             <TextView
                 android:id="@+id/time"
-                android:text="Time"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/date"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:text="Time"
+                app:layout_constraintBottom_toTopOf="@id/address"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/address"
-                style="@style/form"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/date" />
 
             <!-- textbox for address -->
             <TextView
                 android:id="@+id/address"
-                android:text="Address"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/time"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:text="Address"
+                app:layout_constraintBottom_toTopOf="@id/status"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/status"
-                style="@style/form"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/time" />
 
             <!-- textbox for status detail -->
             <TextView
                 android:id="@+id/status"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/address"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/done"
-                android:text="Status:"
-                style="@style/form"
                 android:layout_margin="20dp"
                 android:onClick="triggerSpinner"
-                />
+                android:background="@drawable/roundedsquare"
+                android:text="Status:"
+                app:layout_constraintBottom_toTopOf="@id/done"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address" />
 
             <!-- Spinner for status detail -->
             <Spinner
                 android:id="@+id/statusSpinner"
+                style="@style/editForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/address"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/done"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/done"
-                style="@style/editForm"
-                android:visibility="invisible"
-                />
+                app:layout_constraintTop_toBottomOf="@id/address" />
 
             <TextView
                 android:id="@+id/done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Done"
                 style="@style/button"
-                app:layout_constraintTop_toBottomOf="@id/status"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                />
+                android:background="@drawable/roundedsquare_purple"
+                android:onClick="done"
+                android:paddingLeft="50dp"
+                android:paddingTop="15dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="15dp"
+                android:text="Done"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

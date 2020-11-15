@@ -1,136 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#5C709BF1">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toTopOf="@id/serviceName"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/serviceName"
-                />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
             <EditText
                 android:id="@+id/serviceName"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/logo"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:hint="@string/service"
+                app:layout_constraintBottom_toTopOf="@id/price"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/price"
-                style="@style/form"
-                android:hint="@string/service"
-                android:layout_margin="20dp"
-                />
-            
+                app:layout_constraintTop_toBottomOf="@id/logo" />
+
             <EditText
                 android:id="@+id/price"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/serviceName"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:hint="@string/price"
+                android:inputType="numberDecimal"
+
+                app:layout_constraintBottom_toTopOf="@id/profit"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/profit"
-                style="@style/form"
-                android:hint="@string/price"
-                android:layout_margin="20dp"
-                android:inputType="numberDecimal"
-                />
+                app:layout_constraintTop_toBottomOf="@id/serviceName" />
+
             <EditText
                 android:id="@+id/profit"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/price"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:hint="Profit"
+                android:inputType="numberDecimal"
+
+                app:layout_constraintBottom_toTopOf="@id/numPerson"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/numPerson"
-                style="@style/form"
-                android:hint="Profit"
-                android:layout_margin="20dp"
-                android:inputType="numberDecimal"
-                />
+                app:layout_constraintTop_toBottomOf="@id/price" />
+
             <EditText
                 android:id="@+id/numPerson"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profit"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:hint="@string/numPerson"
+                android:inputType="number"
+
+                app:layout_constraintBottom_toTopOf="@id/foodList"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/foodList"
-                android:hint="@string/numPerson"
-                style="@style/form"
-                android:inputType="number"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/profit" />
+
             <TextView
                 android:id="@+id/foodList"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/numPerson"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/premiumBack"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:onClick="editFood"
                 android:text="@string/food"
                 android:textAlignment="center"
-                style="@style/form"
-                android:onClick="editFood"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintBottom_toTopOf="@id/premiumBack"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/numPerson" />
 
             <TextView
                 android:id="@+id/edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/create"
                 style="@style/button"
-                app:layout_constraintTop_toBottomOf="@id/premiumBack"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/roundedsquare_purple"
+                android:onClick="create"
+                android:paddingLeft="50dp"
+                android:paddingTop="15dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="15dp"
+                android:text="@string/create"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/premiumBack" />
+
             <TextView
                 android:id="@+id/premiumBack"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/foodList"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundedsquare"
+                android:onClick="premiumCheck"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/edit"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/edit"
-                android:textAlignment="center"
-                style="@style/form"
-                android:onClick="premiumCheck"
-                android:layout_margin="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/foodList" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/premiumBack"
-                app:layout_constraintBottom_toBottomOf="@id/premiumBack"
-                app:layout_constraintLeft_toLeftOf="@id/premiumBack"
+                android:layout_marginLeft="15dp"
+                android:onClick="premiumCheck"
                 android:text="Premium item"
                 android:textSize="18sp"
-                android:onClick="premiumCheck">
+                app:layout_constraintBottom_toBottomOf="@id/premiumBack"
+                app:layout_constraintLeft_toLeftOf="@id/premiumBack"
+                app:layout_constraintTop_toTopOf="@id/premiumBack">
 
             </TextView>
+
             <CheckBox
                 android:id="@+id/premiumCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/premiumBack"
+                android:layout_marginRight="20dp"
                 app:layout_constraintBottom_toBottomOf="@id/premiumBack"
                 app:layout_constraintRight_toRightOf="@id/premiumBack"
-                />
+                app:layout_constraintTop_toTopOf="@id/premiumBack" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
