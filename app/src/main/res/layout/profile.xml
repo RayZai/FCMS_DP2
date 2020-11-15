@@ -4,93 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile"
-    android:background="@android:color/white">
+    android:background="#5C709BF1"
+    tools:context=".profile">
+
     <ScrollView
+        android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/form"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_marginTop="20dp"
                 android:id="@+id/profilePic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toTopOf="@id/name"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/name"
-                />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/name"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profilePic"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/email"
-                style="@style/form"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/roundedsquare"
+                app:layout_constraintBottom_toTopOf="@id/email"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
 
-                />
+                app:layout_constraintTop_toBottomOf="@id/profilePic" />
+
             <TextView
                 android:id="@+id/email"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/roundedsquare"
+                app:layout_constraintBottom_toTopOf="@id/member"
+                app:layout_constraintHorizontal_bias="0.6"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/member"
-                style="@style/form"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
             <EditText
                 android:id="@+id/emailEdit"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/member"
-                style="@style/form"
-                android:inputType="textEmailAddress"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
                 android:visibility="gone"
-                />
+                app:layout_constraintBottom_toTopOf="@id/member"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
             <TextView
                 android:id="@+id/member"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/email"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/edit"
                 style="@style/form"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/member_button"
+                android:paddingLeft="45dp"
 
-                />
+                android:paddingTop="13dp"
+                android:paddingRight="45dp"
+                android:paddingBottom="13dp"
+                android:text="Member"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/allBlack"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
                 android:id="@+id/edit"
                 style="@style/button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/roundedsquare_purple"
+                android:elevation="10dp"
+                android:paddingLeft="50dp"
+                android:paddingTop="15dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="15dp"
                 android:text="@string/edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/member"
-                tools:layout_editor_absoluteX="20dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.267"
+                app:layout_constraintStart_toEndOf="@+id/member"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
