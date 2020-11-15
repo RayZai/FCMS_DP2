@@ -14,23 +14,25 @@
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="#5C709BF1"
             android:layout_height="wrap_content"
             >
+
             <ImageView
                 android:id="@+id/serviceImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/serviceName"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/serviceName"
-                />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/serviceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/roundedsquare"
                 app:layout_constraintTop_toBottomOf="@id/serviceImage"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -62,6 +64,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/numPerson"
+                android:background="@drawable/roundedsquare"
                 style="@style/form"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -88,6 +91,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/profit"
+                android:background="@drawable/roundedsquare"
                 style="@style/form"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -114,6 +118,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/serviceList"
+                android:background="@drawable/roundedsquare"
                 style="@style/form"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -140,6 +145,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/premiumBack"
+                android:background="@drawable/roundedsquare"
                 style="@style/form"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -149,30 +155,38 @@
             <TextView
                 android:id="@+id/edit"
                 style="@style/button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/roundedsquare_purple"
                 android:onClick="startEdit"
+                android:paddingLeft="50dp"
+                android:paddingTop="15dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="15dp"
                 android:text="@string/edit"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/premiumBack"
-                 />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/premiumBack" />
+
             <TextView
                 android:id="@+id/premiumBack"
+                style="@style/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/serviceList"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/edit"
+                android:layout_margin="20dp"
+                android:onClick="premiumCheck"
                 android:text="@string/food"
                 android:textAlignment="center"
-                style="@style/form"
-                android:onClick="premiumCheck"
-                android:layout_margin="20dp"
                 android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/edit"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/serviceList"
 
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -180,6 +194,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/premiumBack"
                 app:layout_constraintLeft_toLeftOf="@id/premiumBack"
                 android:text="Premium item"
+                android:textColor="@color/black"
                 android:textSize="18sp">
 
             </TextView>
