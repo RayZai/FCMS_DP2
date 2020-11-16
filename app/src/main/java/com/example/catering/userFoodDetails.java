@@ -47,6 +47,7 @@ public class userFoodDetails extends AppCompatActivity {
         dialog.show();
         service=getIntent().getExtras().getParcelable("service");
         name=findViewById(R.id.serviceName);
+        name.setTextColor(getResources().getColor(R.color.white));
         price=findViewById(R.id.price);
         price.setText("Price: RM"+service.getPrice());
         numPerson=findViewById(R.id.numPerson);
@@ -63,7 +64,8 @@ public class userFoodDetails extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cardBack.setBackgroundResource(service.getColorCard());
-                name.setTextColor(Color.parseColor(service.getColor()));
+                name.setTextColor(getResources().getColor(R.color.white));
+               // name.setTextColor(Color.parseColor(service.getColor()));
                 name.setText(service.getName().trim());
                 Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), service.getImage());
                 Bitmap thumb= ThumbnailUtils.extractThumbnail(icon,250,250);
