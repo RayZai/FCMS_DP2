@@ -58,7 +58,7 @@ public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ViewHolder> 
         holder.time.setText("Time: "+order.getTime());
         holder.status.setText(order.getOrderStatus());
         holder.history.setTag(order.getTransactionNum());
-
+        holder.id.setText("Order No.:"+order.getOrderNum());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView name, date, time, status, address;
+        public TextView name, date, time, status, address,id;
         public ConstraintLayout history;
 
         //initialised the items in the xml of the order page
@@ -79,7 +79,7 @@ public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ViewHolder> 
             time = itemView.findViewById(R.id.time);
             status = itemView.findViewById(R.id.status);
             history = itemView.findViewById(R.id.history);
-
+            id=itemView.findViewById(R.id.id);   
             if (admin){
                 itemView.setOnClickListener(this);
             }
