@@ -58,9 +58,9 @@ public class book extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 bookedList=new ArrayList<>();
                 for(DataSnapshot ds: dataSnapshot.child("order").getChildren()){
-                    if(ds.child("itemOrder").child("id").getValue(String.class).equals(service.getId())){
+                    
                         bookedList.add(ds.child("date").getValue(String.class));
-                    }
+                    
                 }
                 for(DataSnapshot ds : dataSnapshot.child("user").getChildren()) {
                     if (ds.child("id").getValue(String.class).equals(firebaseAuth.getCurrentUser().getUid())) {
